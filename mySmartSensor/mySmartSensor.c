@@ -170,6 +170,7 @@ void calibrate_S1(uint8_t *ThrsHigh, uint8_t *ThrsLow, uint16_t *ThrsFull){
 
 	/*	calculate threshold	*/
 	Threshold1 = (light1+dark1)/2;
+	
 	*ThrsFull = Threshold1;
 	/*	parsing the Threshold to ThrsHigh and ThrsLow	*/
 	*ThrsHigh = Threshold1 >> 8;
@@ -226,14 +227,19 @@ uint8_t dicision(uint8_t in_digitalRaw){
 	uint8_t result;
 	if(in_digitalRaw == 0x01)
 		result='R';
+	
 	else if(in_digitalRaw == 0x04)
 		result='L';
+	
 	else if(in_digitalRaw == 0x02)
 		result='I';
+	
 	else if(in_digitalRaw == 0x07)
 		result='+';
+	
 	else if(in_digitalRaw == 0x05)
 		result='T';
+	
 	else
 		result='U';
 
